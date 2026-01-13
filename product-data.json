@@ -1,0 +1,23 @@
+{
+  "productId": "SXP-001",
+  "productName": "Intelligent Content Adapter",
+  "description": "A powerful module that dynamically transforms website content into structured, machine-readable data for AI agents and LLMs.",
+  "price": {
+    "amount": 499,
+    "currency": "USD"
+  },
+  "features": [
+    "User-Agent based content switching",
+    "Real-time data synchronization",
+    "RESTful API endpoint for AI",
+    "Semantic HTML to JSON conversion"
+  ],
+  "technicalSpecs": {
+    "version": "1.0.0",
+    "compatibility": [
+      "ChatGPT",
+      "Perplexity",
+      "Google Gemini"
+    ]
+  }
+}
