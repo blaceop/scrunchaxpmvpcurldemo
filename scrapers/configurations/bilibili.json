@@ -1,0 +1,62 @@
+{
+  "siteName": "bilibili",
+  "domain": "www.bilibili.com",
+  "baseUrl": "https://www.bilibili.com/video/",
+  "selectors": {
+    "title": "h1.video-title, #viewbox_report h1, [data-v-e4ca6d34] .video-title",
+    "upMain": {
+      "name": ".up-info .name, .up-name, .username",
+      "fansCount": ".up-info .follower .van-popover__reference, .follow-btn-text",
+      "area": ".up-info .level-icon + span"
+    },
+    "videoInfo": {
+      "area": ".tag-area .tag-link, .video-tag-list .tag-item",
+      "tags": ".tag-area .tag-link, .video-tag-list .tag-item",
+      "duration": ".video-time-report, .bpx-player-ctrl-time-duration",
+      "playCount": "#viewbox_report .view, .view span",
+      "likeCount": "#arc_toolbar_report .like.info, .like-btn .text"
+    },
+    "description": ".info-desc, #v_desc, .video-desc",
+    "publishTime": ".pubdate .create, .video-data .time, .publish-date"
+  },
+  "scriptSelectors": {
+    "initialState": "window.__INITIAL_STATE__",
+    "videoData": "window.__playinfo__"
+  },
+  "apiEndpoints": {
+    "videoInfo": "https://api.bilibili.com/x/web-interface/view?bvid="
+  },
+  "dataMapping": {
+    "id": "bvid || aid",
+    "title": "title",
+    "upMain.name": "owner.name || author.name || user.name",
+    "upMain.fansCount": "stat.follower || fans_count",
+    "upMain.area": "tname || channel.name",
+    "videoInfo.area": "tname || channel.name",
+    "videoInfo.tags": "tags || dynamic",
+    "videoInfo.duration": "duration || pubdate",
+    "videoInfo.playCount": "stat.view",
+    "videoInfo.likeCount": "stat.like",
+    "description": "desc || description",
+    "publishTime": "pubdate || publish_time"
+  },
+  "convertToSchema": {
+    "content_type": "video",
+    "id": "{{id}}",
+    "title": "{{title}}",
+    "up_main": {
+      "name": "{{upMain.name}}",
+      "fans_count": "{{upMain.fansCount}}",
+      "area": "{{upMain.area}}"
+    },
+    "video_info": {
+      "area": "{{videoInfo.area}}",
+      "tags": "{{videoInfo.tags}}",
+      "duration": "{{videoInfo.duration}}",
+      "play_count": "{{videoInfo.playCount}}",
+      "like_count": "{{videoInfo.likeCount}}"
+    },
+    "description": "{{description}}",
+    "publish_time": "{{publishTime}}"
+  }
+}

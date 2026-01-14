@@ -1,0 +1,19 @@
+{
+  "content_type": "video",
+  "id": "BV1xx411c7mZ",
+  "title": "【LoRA 微调实战】10 分钟搞定 Stable Diffusion 个性化训练",
+  "up_main": {
+    "name": "AI 技术派",
+    "fans_count": 125000,
+    "area": "科技区"
+  },
+  "video_info": {
+    "area": "人工智能",
+    "tags": ["LoRA", "Stable Diffusion", "AI 绘画", "AIGC", "教程"],
+    "duration": "10:25",
+    "play_count": 356000,
+    "like_count": 12800
+  },
+  "description": "本视频讲解 LoRA 微调的核心步骤，从数据准备到模型部署全流程，目标是让大家快速上手，训练属于自己的个性化AI绘画模型。",
+  "publish_time": "2025-01-10 19:00:00"
+}

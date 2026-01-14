@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= video.name %></title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #1e90ff; }
+        .video-meta, .uploader-meta { background: #eee; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
+        .tag { display: inline-block; background: #1e90ff; color: #fff; padding: 5px 10px; border-radius: 15px; margin-right: 5px; font-size: 0.9em; }
+        p { white-space: pre-wrap; }
+    </style>
+    <%
+        // Helper to find interaction counts
+        const getInteractionCount = (type) => {
+            if (!video.interactionStatistic) return 0;
+            const stat = video.interactionStatistic.find(s => s.interactionType.endsWith(type));
+            return stat ? stat.userInteractionCount : 0;
+        };
+        const playCount = getInteractionCount('WatchAction');
+        const likeCount = getInteractionCount('LikeAction');
+        const keywords = video.keywords ? video.keywords.split(', ') : [];
+    %>
+</head>
+<body>
+    <div class="container">
+        <h1><%= video.name %></h1>
+        
+        <div class="uploader-meta">
+            <strong>Uploader:</strong> <%= video.author.name %> <br>
+            <strong>Fans:</strong> <%= (video.author.interactionStatistic.userInteractionCount / 1000).toFixed(1) %>k
+        </div>
+
+        <div class="video-meta">
+            <strong>Genre:</strong> <%= video.genre %> | 
+            <strong>Duration:</strong> <%= video.duration %> | 
+            <strong>Plays:</strong> <%= (playCount / 1000).toFixed(1) %>k | 
+            <strong>Likes:</strong> <%= (likeCount / 1000).toFixed(1) %>k
+        </div>
+
+        <div>
+            <% keywords.forEach(function(tag) { %>
+                <span class="tag"><%= tag %></span>
+            <% }); %>
+        </div>
+
+        <p><strong>Description:</strong><br><%= video.description %></p>
+
+        <p><small>Published on: <%= new Date(video.uploadDate).toLocaleDateString() %></small></p>
+    </div>
+</body>
+</html>
